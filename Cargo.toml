@@ -1,0 +1,30 @@
+[package]
+name = "retro3d-visualizer"
+version = "0.1.0"
+edition = "2021"
+description = "Visualizador 3D retro vectorial con atractores caóticos, terrenos wireframe y superficies paramétricas"
+
+[dependencies]
+# Renderizado 3D ligero y gestión de ventanas/eventos
+three-d = { version = "0.17", features = ["egui-gui"] }
+
+# Álgebra lineal rápida (vectores, matrices, cuaterniones)
+glam = "0.29"
+
+# Paralelismo en CPU para cálculo masivo de partículas y trayectorias
+rayon = "1.10"
+
+# Generación de números aleatorios para condiciones iniciales
+rand = "0.8"
+
+# Serialización para guardar/cargar presets de ecuaciones y rutas de cámara
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Codificación PNG ligera para captura de pantalla limpia sin interfaz
+png = "0.17"
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+getrandom = { version = "0.2", features = ["js"] }
+wasm-bindgen = "0.2"
+console_error_panic_hook = "0.1"
